@@ -1,0 +1,4 @@
+﻿# name , frames , speed , ani types
+Collectables/coin,8,12,1
+Characters/player1,4,8,6
+Characters/player3,4,8,6

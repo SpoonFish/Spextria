@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RollForward>Major</RollForward>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <TieredCompilation>false</TieredCompilation>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Content\obj\DesktopGL\net6.0\Content\Effects\Maps\**" />
+    <EmbeddedResource Remove="Content\obj\DesktopGL\net6.0\Content\Effects\Maps\**" />
+    <None Remove="Content\obj\DesktopGL\net6.0\Content\Effects\Maps\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Content\obj\DesktopGL\net6.0\Content\Effects\greyscale.mgcontent" />
+    <None Remove="Content\obj\DesktopGL\net6.0\Content\Effects\map_greyscale.mgcontent" />
+    <None Remove="Icon.ico" />
+    <None Remove="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+	  <MonoGameContentReference Include="Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Icon.ico" />
+    <EmbeddedResource Include="Icon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\obj\DesktopGL\net6.0\Content\Effects\" />
+    <Folder Include="Content\obj\DesktopGL\net6.0\Content\NewFolder\" />
+  </ItemGroup>
+  <ItemGroup>
+	<PackageReference Include="MonoGame.Extended.Content.Pipeline" Version="3.8.0" />
+	<PackageReference Include="MonoGame.Extended.Tiled" Version="3.8.0" />
+	<PackageReference Include="MonoGame.Framework.DesktopGL" Version="3.8.1.303" />
+	<PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework.Tools.Packaging.Tasks">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.Framework.Tools.Packaging.Tasks.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
+    <Message Text="Restoring dotnet tools" Importance="High" />
+    <Exec Command="dotnet tool restore" />
+  </Target>
+</Project>
